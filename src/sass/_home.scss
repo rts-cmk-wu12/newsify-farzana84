@@ -1,0 +1,38 @@
+@use 'resets';
+.home-header{
+    display: flex;
+    gap:0.5em;
+}
+.home-logo{
+    max-width: 27px;
+}
+.home-heading{
+    height: 32px;
+    width: 100px;
+    font-weight: 900;
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 600px;
+    margin: auto;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin-bottom: 5px;
+}

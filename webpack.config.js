@@ -42,7 +42,8 @@ module.exports = {
     mode: 'development',
     entry: {
         index: './src/js/index.js',
-        onboarding: './src/js/onboarding.js'
+        auth: './src/js/auth.js',
+        home: './src/js/home.js',
     },
     output: {
         clean: true,
@@ -64,14 +65,14 @@ module.exports = {
             template: './src/index.html',
         }),
         new HtmlWebpackPlugin({
-            template: './src/onboarding.html',
-            filename: 'onboarding.html',
-            chunks: ['onboarding']
+            template: './src/auth.html',
+            filename: 'auth.html',
+            chunks: ['auth']
         }),
         new HtmlWebpackPlugin({
-            template: './src/onboarding2.html',
-            filename: 'onboarding2.html',
-            chunks: ['onboarding2']
+            template: './src/home.html',
+            filename: 'home.html',
+            chunks: ['home']
         }),
         
     ]
