@@ -1,5 +1,5 @@
 
-class SplashScreen {
+/*class SplashScreen {
     #element = null;
 
     get element() { return this.#element }
@@ -14,11 +14,7 @@ class SplashScreen {
         logo.classList.add('newsify-logo');
         logo.src = './images/newsify_logo.png';
         logo.alt = 'Logo';
-        logo.addEventListener('click', ()=>{
-            
-        window.location.href = 'onboarding.html';
-            
-        })
+       
         this.#element.append(logo);
         setTimeout(() => { logo.style.opacity = 1; logo.style.transition = 'opacity 1s ease-in-out'; }, 1000);
     }
@@ -34,7 +30,7 @@ class SplashScreen {
     }
 }
 
-module.exports = SplashScreen;
+module.exports = SplashScreen;*/
 
 
 
