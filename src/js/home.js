@@ -8,8 +8,18 @@ fetchMostPopolarByViews(1).then(
 );
 */
 document.addEventListener('DOMContentLoaded', async () => {
+
+
+
+    const settings = document.querySelector('.settings');
+    settings.addEventListener('click', () => {
+        window.location.href = 'settings.html';
+         
+     });
+
     const popularNews = await fetchMostPopularByViews(7);
     console.log(popularNews);
+
 
     const sections = document.querySelectorAll('.news-section');
 
