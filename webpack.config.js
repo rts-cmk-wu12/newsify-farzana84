@@ -44,6 +44,7 @@ module.exports = {
         index: './src/js/index.js',
         auth: './src/js/auth.js',
         home: './src/js/home.js',
+        settings: './src/js/settings.js',
     },
     output: {
         clean: true,
@@ -73,6 +74,11 @@ module.exports = {
             template: './src/home.html',
             filename: 'home.html',
             chunks: ['home']
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/settings.html',
+            filename: 'settings.html',
+            chunks: ['settings']
         }),
         
     ]

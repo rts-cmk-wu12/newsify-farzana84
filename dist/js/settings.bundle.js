@@ -119,23 +119,13 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/js/components/fetch-most-popular-by-views.js":
-/*!**********************************************************!*\
-  !*** ./src/js/components/fetch-most-popular-by-views.js ***!
-  \**********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("__webpack_require__(/*! ../../sass/styles.scss */ \"./src/sass/styles.scss\")\r\n//const API_KEY = 'WS2sWpl8J2xj1BQb5e0KTdRgQqdlhNGO';\r\nconst API_KEY = 'MlTTn3vMLfdAE6nqruHnKOI2fioS97Ft'\r\n//const BASE_URL = 'https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=yourkey';\r\nconst BASE_URL = 'https://api.nytimes.com/svc/';\r\nconst endpoints = {\r\n   mostPopularByViews: 'mostpopular/v2/viewed/'\r\n\r\n}\r\n\r\n  async function fetchMostPopularByViews(days = 1) {\r\n   const url = new URL(`${days}.json`, BASE_URL + endpoints.mostPopularByViews);\r\n\r\n   url.searchParams.set('api-key', API_KEY);//?api-key=yourkey    searchparams er age ?hoe\r\n\r\n   const response = await fetch(url);\r\n   const data = await response.json();\r\n\r\n   return data;\r\n}\r\nmodule.exports = fetchMostPopularByViews;\n\n//# sourceURL=webpack://newsify-farzana84/./src/js/components/fetch-most-popular-by-views.js?");
-
-/***/ }),
-
-/***/ "./src/js/home.js":
-/*!************************!*\
-  !*** ./src/js/home.js ***!
-  \************************/
+/***/ "./src/js/settings.js":
+/*!****************************!*\
+  !*** ./src/js/settings.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\r\nconst fetchMostPopularByViews = __webpack_require__(/*! ./components/fetch-most-popular-by-views */ \"./src/js/components/fetch-most-popular-by-views.js\");\r\n/*\r\nfetchMostPopolarByViews(1).then(\r\n    data => console.log(data)\r\n    \r\n);\r\n*/\r\n/*document.addEventListener('DOMContentLoaded', async () => {\r\n    const popularNews = await fetchMostPopularByViews(7);\r\n    console.log(popularNews);\r\n\r\n    const sections = document.querySelectorAll('.news-section');\r\n\r\n    popularNews.results.forEach(article => {\r\n        sections.forEach(section => {\r\n            const sectionName = section.querySelector('.section-heading__text').textContent.toLowerCase();\r\n            if (article.section.toLowerCase().includes(sectionName)) {\r\n                const dropdownContent = section.querySelector('.dropdown-content');\r\n                const articleElement = document.createElement('article');\r\n                articleElement.classList.add('news-article');\r\n                articleElement.innerHTML = `\r\n                         <img class=\"news-image\" src=\"${article.media[0]?.['media-metadata'][0].url || 'placeholder-image.jpg'}\" alt=\"${article.title}\">;\r\n                          <div class= \"news-text\">\r\n                           <h3>${article.title}</h3>;\r\n                              <p>${article.abstract}</p>;\r\n                             </div>`;\r\n\r\n\r\n                // newsText.appendChild(newsArticleHeading, newsArticleDescription);\r\n                //articleElement.appendChild(newsImage, newsText);\r\n                dropdownContent.appendChild(articleElement);\r\n            }\r\n\r\n\r\n\r\n        });\r\n    });\r\n\r\n    sections.forEach(section => {\r\n        const arrow = section.querySelector('.arrow');\r\n       \r\n        \r\n        arrow.addEventListener('click', () => {\r\n            const content = section.querySelector('.dropdown-content');\r\n        content.classList.toggle('expanded');\r\n            \r\n\r\n               console.log('Arrow clicked:', section); \r\n        });\r\n    });\r\n\r\n\r\n\r\n        });\r\n*/\r\n\r\n\r\n/*const newsText = document.createElement('div');\r\n            const newsImage = document.createElement('img');\r\n\r\n            const newsArticleHeading = document.createElement('h3');\r\n            const newsArticleDescription = document.createElement('p');\r\n            newsText.classList.add('news-text')\r\n            newsImage.classList.add('news-img')\r\n            newsArticleHeading.classList.add('news-article__heading')\r\n            newsArticleDescription.classList.add('news-article__description')\r\n\r\n\r\n            newsImage.src = 'article.media[0]?.[\"media-metadata\"][0].url';\r\n            newsArticleHeading.innerHTML = article.title;\r\n            newsArticleDescription.innerHTML = article.abstract;\r\n*/\r\n\r\n\r\ndocument.addEventListener('DOMContentLoaded', async () => {\r\n    const popularNews = await fetchMostPopularByViews(7);\r\n    console.log(popularNews);\r\n\r\n    const sections = document.querySelectorAll('.news-section');\r\n\r\n    popularNews.results.forEach(article => {\r\n        sections.forEach(section => {\r\n            const sectionName = section.querySelector('.section-heading__text').textContent.toLowerCase();\r\n            if (article.section.toLowerCase().includes(sectionName)) {\r\n                const dropdownContent = section.querySelector('.dropdown-content');\r\n                const articleElement = document.createElement('article');\r\n                articleElement.classList.add('news-article');\r\n                articleElement.innerHTML = `\r\n                    <img class=\"news-image\" src=\"${article.media[0]?.['media-metadata'][0].url || 'placeholder-image.jpg'}\" alt=\"${article.title}\">\r\n                    <div class=\"news-text\">\r\n                        <h3>${article.title}</h3>\r\n                        <p>${article.abstract}</p>\r\n                    </div>\r\n                `;\r\n                dropdownContent.appendChild(articleElement);\r\n            }\r\n        });\r\n    });\r\n\r\n    sections.forEach(section => {\r\n        const arrow = section.querySelector('.arrow');\r\n        arrow.addEventListener('click', () => {\r\n            const content = section.querySelector('.dropdown-content');\r\n            section.classList.toggle('expanded');\r\n            content.classList.toggle('hidden');\r\n            console.log('Arrow clicked:', section);\r\n        });\r\n    });\r\n});\r\n\n\n//# sourceURL=webpack://newsify-farzana84/./src/js/home.js?");
+eval("__webpack_require__(/*! ../sass/styles.scss */ \"./src/sass/styles.scss\") ;\r\nconst htmlContainer = document.getElementById('html-container');\r\nconst bodyContainer = document.getElementById('body-container');\r\nconst container = document.getElementById('container');\r\nconst darkModeToggle = document.getElementById('dark-mode-toggle');\r\n \r\ndarkModeToggle.addEventListener('change', () => {\r\n  htmlContainer.classList.toggle('dark-mode');\r\n  bodyContainer.classList.toggle('dark-mode');\r\n  container.classList.toggle('dark-mode');\r\n});\n\n//# sourceURL=webpack://newsify-farzana84/./src/js/settings.js?");
 
 /***/ })
 
@@ -216,7 +206,7 @@ eval("\r\nconst fetchMostPopularByViews = __webpack_require__(/*! ./components/f
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/home.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/settings.js");
 /******/ 	
 /******/ })()
 ;

@@ -1,6 +1,8 @@
 //const SplashScreen = require('./components/splash-screen');
-require('../sass/styles.scss')
-document.addEventListener('DOMContentLoaded', () => {
+//const fetchMostPopularByViews = require('./home.js');
+require('../sass/styles.scss') ;
+import {fetchMostPopularByViews } from './components/fetch-most-popular-by-views.js' ;
+document.addEventListener('DOMContentLoaded', async() => {
     const app = document.getElementById('app');
 
     class SplashScreen {
@@ -128,5 +130,96 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize with the first slide
         updateSlide(currentIndex);
     }
+
+
 });
+const page = window.location.pathname;
+
+if (page === '/home.html') {
+
+    const popularNews = await fetchMostPopolarByViews(7);
+    console.log(popularNews);
+    
+
+}
+
+/*if (page === '/index.html') {
+    const products = await getProducts();
+    console.log(products);
+    
+    //const productList =document.createElement('div');
+    //productList.classList.add('sale-items__product-container');
+    const saleItemsContainer = document.querySelector('.sale-items');
+    const productList = document.createElement('div');//creat korte hobe document dia ... kintu eta kothae kisher vitor creat hobe sheta tik korte hobe append onujai
+    productList.classList.add('sale-items__product-list');
+
+    saleItemsContainer.append(productList);
+
+    products.forEach(product => {
+        const newProductCard = createProductCard(product);
+        newProductCard.classList.add('product');
+        productList.append(newProductCard);
+    });
+
+} else if (page == '/cart.html') {
+    const shoppingCartTable = document.querySelector('.shopping-cart__table');
+    const cartItems = getItems();
+    const cartItemsKeysAsArray = Object.keys(cartItems);
+
+    // Create a total price row element here, so it doesn't get appended in each iteration
+    const totalPriceRow = document.createElement('tr');
+    totalPriceRow.classList.add('shopping-cart__total-price-row');
+    const totalPriceLabel = document.createElement('td');
+    const totalPriceValue = document.createElement('td');
+
+    // Calculate total price once outside the loop
+    const totalPrice = calculateTotal();
+    console.log('totalprice', totalPrice);
+    totalPriceLabel.innerText = 'Total Price';
+    totalPriceValue.colSpan = 3; // Span across the rest of the columns
+    totalPriceValue.innerText = totalPrice;
+
+    // Append the label and value cells to the total price row
+    totalPriceRow.appendChild(totalPriceLabel);
+    totalPriceRow.appendChild(totalPriceValue);
+
+    cartItemsKeysAsArray.forEach(key => {
+        const tableRow = document.createElement('tr');
+        tableRow.classList.add('shopping-cart__item-row');
+
+        const amountTableData = document.createElement('td');
+        const nameTableData = document.createElement('td');
+        const priceTableData = document.createElement('td');
+        const removeTableData = document.createElement('td');
+
+        const buttonRemove = document.createElement('button');
+        buttonRemove.innerText = 'Remove';
+        buttonRemove.addEventListener('click', () => {
+            deleteItems(key);
+            shoppingCartTable.removeChild(tableRow); // Remove row from table
+            updateTotalPrice();
+        });
+
+        amountTableData.innerText = cartItems[key].amount;
+        nameTableData.innerText = cartItems[key].name;
+        priceTableData.innerText = cartItems[key].price;
+        removeTableData.appendChild(buttonRemove); // Append the button to the cell
+
+        tableRow.append(amountTableData, nameTableData, priceTableData, removeTableData);
+        shoppingCartTable.appendChild(tableRow); // Append each item row to the table
+    });
+
+    // Append the total price row after all item rows
+    shoppingCartTable.appendChild(totalPriceRow);
+
+    function updateTotalPrice() {
+        const newTotalPrice = calculateTotal();
+        totalPriceValue.innerText = newTotalPrice; // Update total price value
+    }
+}
+
+
+
+
+    */
 
